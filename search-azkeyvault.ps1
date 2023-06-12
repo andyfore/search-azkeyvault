@@ -62,7 +62,11 @@ if (!$azContext) {
 }
 Write-Host "Connected as: $($azContext.Account.Id)" -ForegroundColor Cyan
 
+$secretdata = @{}
 $vaultsAndSecretNames = @{}
+
+$searchvalue =  Read-Host -Prompt 'Enter the search string: '
+
 if ($KeyVaultName -eq "") {
     $vaultsAndSecretNames = Get-AccessibleKeyVaultsAndSecretNames
     Write-Host "Found [$($vaultsAndSecretNames.Keys.Count)] accessible key vaults"
@@ -86,14 +90,19 @@ $percentComplete = 0
 $matchingVaultSecrets | ForEach-Object {
     Write-Progress -Activity "Enumerating Azure Key Vault Secrets" -Status "$percentComplete% Complete:" -PercentComplete $percentComplete
     $secretName = $_
-    $secretValue = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -AsPlainText
+    $secretValue = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -AsPlainText   
     if ($secretValue -match $SecretValueRegex) {
         $result = [PSCustomObject]@{
             SecretName = $secretName
-            SecretValue = $secretValue 
+            SecretValue = $secretValue
         }
-        # Write-Output $result | Select-String -AllMatches -Pattern "nw01" |Format-Table -Wrap -Autosize
-        Write-Output $result | Format-Table -Wrap -Autosize
+
+        if ($searchvalue -eq "" ) {
+            Write-Output $result | Format-Table -Wrap -Autosize
+        }
+        else {
+            Write-Output $result | Select-String -AllMatches -Pattern "$searchvalue" |Format-Table -Wrap -Autosize
+        }
     }
     $secretIndex++
     $percentComplete = [int](($secretIndex / $matchingVaultSecretsCount) * 100)
