@@ -1,6 +1,21 @@
 # Created by https://www.toptal.com/developers/gitignore/api/linux,macos,windows,terraform,ansible
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,windows,terraform,ansible
 
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
 ### Ansible ###
 *.retry
 
@@ -113,5 +128,27 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Packer ###
+# Cache objects
+packer_cache/
+
+# Crash log
+crash.log
+
+# https://www.packer.io/guides/hcl/variables
+# Exclude all .pkrvars.hcl files, which are likely to contain sensitive data,
+# such as password, private keys, and other secrets. These should not be part of
+# version control as they are data points which are potentially sensitive and
+# subject to change depending on the environment.
+#
+*.pkrvars.hcl
+
+# For built boxes
+*.box
+
+### Packer Patch ###
+# ignore temporary output files
+output-*/
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,terraform,ansible
