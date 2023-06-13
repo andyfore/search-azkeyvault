@@ -93,7 +93,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![Edge][Edge]][Edge-url]
 * [![VSCode][VSCode]][VSCode-url]
 * [![PowerShell][PowerShell]][PowerShell-url]
-* [![macOS][[macOS]]][macOS-url]
+* [![macOS][macOS]][macOS-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
