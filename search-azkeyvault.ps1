@@ -71,7 +71,7 @@ if ($KeyVaultName -eq "") {
     # Write-Host "Accessible key vaults`n" 
     $menu = @{}
 
-    $vaultsAndSecretNames.GetEnumerator() | ForEach-Object -Begin {$counter = 1} -Process {
+    $vaultsAndSecretNames.GetEnumerator() | Sort-Object Name| ForEach-Object -Begin {$counter = 1} -Process {
         Write-Output "$counter. $($_.Name)"
         $menu.Add($counter,$($_.Name))
         $counter++
