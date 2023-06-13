@@ -113,18 +113,15 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://gitlab.com/andy.fore/search-azkeyvault.git
    ```
-3. Install NPM packages
+3. Open PowerShell terminal
+4. Change to the search-azkeyvault directory
+5. Run the script in PowerShell and answer the prompts
    ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+   ./search-azkeyvault.ps1
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
