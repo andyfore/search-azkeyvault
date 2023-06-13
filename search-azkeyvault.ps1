@@ -3,7 +3,7 @@ param (
     [string] $KeyVaultName = "",
     [string] $SecretNameRegex = ".*",
     [string] $SecretValueRegex = ".*",
-    [string] $Subscription = "it-shared-001"
+    [string] $Subscription = ""
 )
 
 Write-Verbose "Importing or installing the Az module"
@@ -54,12 +54,15 @@ function Get-AccessibleKeyVaultsAndSecretNames {
     return $accessibleVaults
 }
 
-$azContext = Get-AzContext
-if (!$azContext) {
-    Write-Verbose "Connecting Azure account (check for a browser window)"
-    $azAccount = Connect-AzAccount -Subscription $Subscription
-    $azContext = $azAccount.Context
+$azAccount = Connect-AzAccount
+$azContext = $azAccount.Context
+$Subscription = (Get-AzContext).Subscription.Name
+if (($null -eq $Subscription) -or ($Subscription -eq "")) {
+    Write-Error "Subscription ID cannot be empty or null." -Category InvalidData
+    Write-Warning "Please contact your Azure Administrator."
+    exit
 }
+
 Write-Host "Connected as: $($azContext.Account.Id)" -ForegroundColor Cyan
 
 # $secretdata = @{}
