@@ -62,19 +62,34 @@ if (!$azContext) {
 }
 Write-Host "Connected as: $($azContext.Account.Id)" -ForegroundColor Cyan
 
-$secretdata = @{}
+# $secretdata = @{}
 $vaultsAndSecretNames = @{}
-
-$searchvalue =  Read-Host -Prompt 'Enter the search string: '
 
 if ($KeyVaultName -eq "") {
     $vaultsAndSecretNames = Get-AccessibleKeyVaultsAndSecretNames
-    Write-Host "Found [$($vaultsAndSecretNames.Keys.Count)] accessible key vaults"
+    Write-Host "Found [$($vaultsAndSecretNames.Keys.Count)] accessible key vaults`n" -ForegroundColor Cyan
+    # Write-Host "Accessible key vaults`n" 
+    $menu = @{}
 
-    while ($vaultsAndSecretNames.Keys -notcontains $KeyVaultName) {
-        Write-Host "`nAccessible key vaults:`n$($vaultsAndSecretNames.Keys -join [Environment]::NewLine)" -ForegroundColor Cyan
-        $KeyVaultName = Read-Host "`nEnter the key vault name to search"
+    $vaultsAndSecretNames.GetEnumerator() | ForEach-Object -Begin {$counter = 1} -Process {
+        Write-Output "$counter. $($_.Name)"
+        $menu.Add($counter,$($_.Name))
+        $counter++
     }
+
+    [int]$ans = Read-Host "`nSelect the key vault to search (enter to parse all accessible)"
+    $selection = $menu.Item($ans)
+    $KeyVaultName  = $selection
+    Write-Output "$KeyVaultName"
+
+    $searchvalue =  Read-Host -Prompt 'Enter the search string'
+
+
+    # while ($vaultsAndSecretNames.Keys -notcontains $KeyVaultName) {
+    #     Write-Host "`nAccessible key vaults:`n$($vaultsAndSecretNames.Keys -join [Environment]::NewLine)" -ForegroundColor Cyan
+    #     $KeyVaultName = Read-Host "`nEnter the key vault name to search"
+    # }
+
 }
 else {
     $vaultSecrets = Get-AzKeyVaultSecret -VaultName $KeyVaultName -ErrorAction Stop | Select-Object -ExpandProperty Name
@@ -90,7 +105,7 @@ $percentComplete = 0
 $matchingVaultSecrets | ForEach-Object {
     Write-Progress -Activity "Enumerating Azure Key Vault Secrets" -Status "$percentComplete% Complete:" -PercentComplete $percentComplete
     $secretName = $_
-    $secretValue = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -AsPlainText   
+    $secretValue = Get-AzKeyVaultSecret -VaultName $KeyVaultName -Name $secretName -AsPlainText
     if ($secretValue -match $SecretValueRegex) {
         $result = [PSCustomObject]@{
             SecretName = $secretName
@@ -101,7 +116,15 @@ $matchingVaultSecrets | ForEach-Object {
             Write-Output $result | Format-Table -Wrap -Autosize
         }
         else {
-            Write-Output $result | Select-String -AllMatches -Pattern "$searchvalue" |Format-Table -Wrap -Autosize
+            # Write-Output $result | Format-Table -Wrap -Autosize | Select-String -AllMatches -Pattern "$searchvalue"
+            # Write-Output $result | Select-String -AllMatches -Pattern $searchvalue | Format-Table -Wrap -Autosize
+            # ((Get-Content $file) -join "`n") + "`n" | Set-Content -NoNewline $file
+            if ($result.SecretName.ToLower().Contains($searchvalue)) {
+                Write-Output $result | Format-Table -Wrap -Autosize
+            }
+            elseif ($result.SecretValue.ToLower().Contains($searchvalue)) {
+                Write-Output $result | Format-Table -Wrap -Autosize
+            }
         }
     }
     $secretIndex++
