@@ -109,7 +109,7 @@ To get a local copy up and running follow these simple example steps.
 
 This is an example of how to list things you need to use the software and how to install them.
 * Microsoft PowerShell
-** [Find out more about installing PowerShell on your system](https://github.com/PowerShell/PowerShell)
+    * [Find out more about installing PowerShell on your system](https://github.com/PowerShell/PowerShell)
 
 ### Installation
 
