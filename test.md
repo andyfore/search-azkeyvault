@@ -20,11 +20,10 @@
 -->
 <!--[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+[![Stargazers][stars-shield]][stars-url]-->
+[![LinkedIn][linkedin-shield]][linkedin-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]-->
-
 
 
 <!-- PROJECT LOGO -->
@@ -183,9 +182,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Andy Fore - andrewrfore@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://gitlab.com/andy.fore/search-azkeyvault](https://gitlab.com/andy.fore/search-azkeyvault)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -194,9 +193,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* Based on a script originally written by Michael Ayling
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -211,11 +208,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
 [stars-url]: https://github.com/github_username/repo_name/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
+[issues-url]: https://gitlab.com/andy.fore/search-azkeyvault/-/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://gitlab.com/andy.fore/search-azkeyvault/-/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/arfore/
 [product-screenshot]: images/screenshot.png
 [Edge]: https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white
 [Edge-url]: https://www.microsoft.com/en-us/edge?form=MA13FJ&exp=e00
