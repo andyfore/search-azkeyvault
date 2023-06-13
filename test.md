@@ -219,9 +219,9 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [product-screenshot]: images/screenshot.png
 [Edge]: https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white
 [Edge-url]: https://www.microsoft.com/en-us/edge?form=MA13FJ&exp=e00
-[VSCode]: (https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-[VSCode-url]: (https://code.visualstudio.com/)
-[PowerShell]: (https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
-[PowerShell-url]: (https://learn.microsoft.com/en-us/powershell/)
-[macOS]: (https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
-[macOS-url]: (https://www.apple.com/macos/)
+[VSCode]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
+[VSCode-url]: https://code.visualstudio.com/
+[PowerShell]: https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white
+[PowerShell-url]: https://learn.microsoft.com/en-us/powershell/
+[macOS]: https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0
+[macOS-url]: https://www.apple.com/macos/
